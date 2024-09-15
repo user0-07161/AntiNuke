@@ -51,7 +51,7 @@ async def createbackup(interaction: nextcord.Interaction):
             backups[str(interaction.guild.id)]["stages"][stage.name]["category"] = stage.category.name
         except:
             pass
-    for role in interaction.guild.roles.reverse():
+    for role in interaction.guild.roles:
         if not role.is_bot_managed() and not role.is_integration() and not role.is_default():
             backups[str(interaction.guild.id)]["roles"][role.name] = {}
             backups[str(interaction.guild.id)]["roles"][role.name]["position"] = role.position
