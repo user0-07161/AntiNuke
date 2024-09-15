@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 everyonepingsinpast15secs = 0
 restoring = 0
-bot = commands.Bot()
+bot = commands.Bot(intents=nextcord.Intents.all())
 raidtriggers = {
 
 }
@@ -48,6 +48,7 @@ for command in os.listdir(pathlib.PurePath("src", "commands")):
 
 @bot.event
 async def on_ready():
+    await bot.change_presence(activity=nextcord.Game(name=f"Protecting {str(len(bot.guilds))} servers"))
     print(f"Logged in as \"{bot.user}\"")
     
 bot.run(os.getenv("TOKEN_DSC"))
