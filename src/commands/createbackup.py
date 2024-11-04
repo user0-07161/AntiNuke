@@ -58,7 +58,7 @@ async def createbackup(interaction: nextcord.Interaction):
             backups[str(interaction.guild.id)]["roles"][role.name]["permissions"] = int(role.permissions.value)
         roles.append(role.name)
     with open("backups.json", "w") as f:
-        json.dump(backups, f)
+        json.dump(backups, f, indent=4)
     embed = nextcord.Embed(title=f"Backup successfully created (Server name: \'{interaction.guild.name}\')", description="Your server is prepared for raids now :smiling_imp:\nHere's what I backed up:")
     embed.add_field(name=f"{len(roles)} Roles", value=f"{', '.join(roles)}")
     embed.add_field(name=f"{len(channels)} Channels, Threads and VCs", value=f"{', '.join(channels)}")
